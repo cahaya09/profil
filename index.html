@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Suci Nur Cahya</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* TYPING EFFECT 1 */
+    #typed {
+      border-right: 3px solid #ff8fc7;
+      padding-right: 5px;
+      animation: blink 0.7s infinite;
+      white-space: nowrap;
+    }
+
+    /* TYPING EFFECT 2 */
+    #role {
+      margin-top: 5px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #ff62a8;
+      height: 25px;
+      border-right: 3px solid #ff62a8;
+      padding-right: 5px;
+      animation: blink 0.7s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes blink {
+      0% { border-color: transparent; }
+      50% { border-color: #ff8fc7; }
+      100% { border-color: transparent; }
+    }
+
+    /* Avatar img */
+    .avatar-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffb6d9;
+      box-shadow: 0 4px 10px rgba(255,150,180,0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <img src="cv.png" class="avatar-img">
+      <div class="brand-text">
+        <h1>Suci Nur Cahya</h1>
+        <p>Sistem Informasi — Universitas Komputama</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="resume.html" class="nav-link">About Me</a>
+      <a href="#portfolio" class="nav-link">Portofolio</a>
+      <a href="#skills" class="nav-link">Keahlian</a>
+      <a href="#location" class="nav-link">Lokasi</a>
+      <a href="#contact" class="nav-link">Kontak</a>
+    </nav>
+
+    <button id="toggleBtn" class="toggle">☰</button>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="hero-card">
+        <h2>Halo, saya</h2>
+        <h3>Suci Nur Cahya</h3>
+
+        <!-- TYPING EFFECT 1 -->
+        <p class="muted"><span id="typed"></span></p>
+
+        <!-- TYPING EFFECT 2 (NEW) -->
+        <p id="role"></p>
+
+        <div class="cta">
+          <a href="#portfolio" class="btn">Lihat Portofolio</a>
+          <a href="#contact" class="btn outline">Hubungi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section">
+      <h2>Portofolio</h2>
+      <div class="grid">
+        <article class="project">
+          <div class="project-thumb">Project 1</div>
+          <h3>Web Pendataan Masyarakat</h3>
+          <p>Sistem Informasi Pendataan masyarakat di Desa Parungkamal</p>
+        </article>
+
+        <article class="project">
+          <div class="project-thumb">Project 2</div>
+          <h3>Sistem Perpustakaan</h3>
+          <p>Prototype UI per halaman.</p>
+        </article>
+
+        <article class="project">
+          <div class="project-thumb">Project 3</div>
+          <h3>Absensi Online Pegawai Desa</h3>
+          <p>Sistem absensi online menggunakan QR Code</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2>Keahlian</h2>
+      <div class="skills">
+        <div class="skill">
+          <h4>Frontend</h4>
+          <p>HTML, CSS, Python</p>
+        </div>
+        <div class="skill">
+          <h4>Backend</h4>
+          <p>Python (Flask), API</p>
+        </div>
+        <div class="skill">
+          <h4>Data</h4>
+          <p>ML dasar, analisis data</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="section">
+      <h2>Lokasi</h2>
+      <div class="card">
+        <p>Universitas Komputama</p>
+        <p><a href="https://www.google.com/maps/search/Universitas+Komputama" target="_blank">Lihat di Google Maps</a></p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Kontak</h2>
+      <div class="card contact-card">
+        <form id="contactForm" action="/contact" method="POST">
+          <label>Nama</label>
+          <input name="name" required>
+
+          <label>Email</label>
+          <input name="email" type="email" required>
+
+          <label>Pesan</label>
+          <textarea name="message" required></textarea>
+
+          <button class="btn">Kirim</button>
+        </form>
+
+        <div id="formResult" class="muted"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Suci Nur Cahya — Sistem Informasi, Universitas Komputama</p>
+    </footer>
+  </main>
+
+  <!-- SCRIPT TYPING EFFECT -->
+  <script>
+    /* TYPING EFFECT 1 */
+    const text = "Mahasiswa Sistem Informasi — Fakultas Sains dan Teknologi, Universitas Komputama";
+    let index = 0;
+
+    function typeEffect() {
+      const target = document.getElementById("typed");
+      if (index < text.length) {
+        target.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 60);
+      }
+    }
+
+    window.addEventListener("load", typeEffect);
+
+
+    /* TYPING EFFECT 2 (BERGANTI-GANTI) */
+    const roles = [
+      "I'm UI/UX Designer",
+      "I'm Web Developer",
+      "I'm Mahasiswa"
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeRole() {
+      const roleEl = document.getElementById("role");
+
+      if (!deleting && charIndex <= roles[roleIndex].length) {
+        roleEl.textContent = roles[roleIndex].substring(0, charIndex++);
+      } else if (deleting && charIndex >= 0) {
+        roleEl.textContent = roles[roleIndex].substring(0, charIndex--);
+      }
+
+      if (charIndex === roles[roleIndex].length + 1) {
+        deleting = true;
+        setTimeout(typeRole, 1000);
+        return;
+      }
+
+      if (deleting && charIndex < 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+      }
+
+      setTimeout(typeRole, deleting ? 50 : 70);
+    }
+
+    window.onload = function () {
+      typeEffect();
+      setTimeout(typeRole, 1200);
+    };
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
